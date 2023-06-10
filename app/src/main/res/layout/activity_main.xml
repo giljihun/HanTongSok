@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back_1"
-    tools:context=".MainActivity">
-
+    tools:context=".MainPage">
 
     <TextView
         android:id="@+id/title"
@@ -16,16 +16,15 @@
         android:fontFamily="@font/chosuncentennial_otf"
         android:text="한통속"
         android:textColor="@color/black"
-        android:textSize="50dp"
+        android:textSize="50sp"
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/line2"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/line1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,14 +34,13 @@
 
     <ImageView
         android:id="@+id/line2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:srcCompat="@drawable/line_1" />
-
 
     <TextView
         android:id="@+id/text_vol"
@@ -53,7 +51,7 @@
         android:fontFamily="@font/chosuncentennial_otf"
         android:text="VOL.01"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/line1"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +66,7 @@
         android:fontFamily="@font/chosuncentennial_otf"
         android:text="4 June 2023"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/line1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,13 +81,13 @@
         android:ellipsize="marquee"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:fontFamily="@font/chosuncentennial_otf"
+        android:fontFamily="@font/chosunnm"
         android:marqueeRepeatLimit="marquee_forever"
         android:scrollHorizontally="true"
         android:singleLine="true"
         android:text="headline이 표시될 텍스트"
         android:textColor="@color/black"
-        android:textSize="40dp"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line1" />
@@ -102,7 +100,7 @@
         android:fontFamily="@font/chosuncentennial_otf"
         android:text="EDITOR: Gil"
         android:textColor="@color/black"
-        android:textSize="10dp"
+        android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.101"
@@ -111,11 +109,11 @@
 
     <ImageView
         android:id="@+id/line3"
-        android:layout_width="321dp"
-        android:layout_height="9dp"
+        android:layout_width="334dp"
+        android:layout_height="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headline"
         app:layout_constraintVertical_bias="0.003"
@@ -142,83 +140,134 @@
         app:srcCompat="@drawable/dailyreport" />
 
     <ImageView
-        android:id="@+id/img_notice"
-        android:layout_width="178dp"
-        android:layout_height="134dp"
-        android:layout_marginTop="80dp"
+        android:id="@+id/img_gongzi"
+        android:layout_width="218dp"
+        android:layout_height="188dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_hangsa"
-        app:layout_constraintVertical_bias="0.033"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.511"
+        app:srcCompat="@drawable/gongzi" />
+
+    <ImageView
+        android:id="@+id/img_hangsa"
+        android:layout_width="228dp"
+        android:layout_height="202dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_setting"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line3"
+        app:layout_constraintVertical_bias="0.807"
+        app:srcCompat="@drawable/hangsa" />
+
+    <ImageView
+        android:id="@+id/img_setting"
+        android:layout_width="159dp"
+        android:layout_height="126dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line3"
+        app:layout_constraintVertical_bias="0.685"
         app:srcCompat="@drawable/notice" />
+
+    <TextView
+        android:id="@+id/text_haksa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/chosuncentennial_otf"
+        android:text="학사공지"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/img_haksa"
+        app:layout_constraintEnd_toEndOf="@+id/img_haksa"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="@+id/img_haksa"
+        app:layout_constraintTop_toTopOf="@+id/img_haksa"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <ImageView
+        android:id="@+id/img_haksa"
+        android:layout_width="178dp"
+        android:layout_height="207dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_gongzi"
+        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.469"
+        app:srcCompat="@drawable/haksa" />
 
     <TextView
         android:id="@+id/text_notice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/chosuncentennial_otf"
         android:text="알림설정"
         android:textColor="@color/black"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.736"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img_notice" />
-
-    <ImageView
-        android:id="@+id/img_gongzi"
-        android:layout_width="303dp"
-        android:layout_height="199dp"
-        app:layout_constraintBottom_toTopOf="@+id/img_hangsa"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.796"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editor"
-        app:layout_constraintVertical_bias="0.62"
-        app:srcCompat="@drawable/gongzi" />
-
-    <ImageView
-        android:id="@+id/img_hangsa"
-        android:layout_width="205dp"
-        android:layout_height="168dp"
-        android:layout_marginBottom="76dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/img_notice"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editor"
-        app:layout_constraintVertical_bias="0.968"
-        app:srcCompat="@drawable/hangsa" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/img_setting"
+        app:layout_constraintEnd_toEndOf="@+id/img_setting"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/img_setting"
+        app:layout_constraintTop_toTopOf="@+id/img_setting"
+        app:layout_constraintVertical_bias="0.592" />
 
     <TextView
         android:id="@+id/text_hangsa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/chosuncentennial_otf"
-        android:text="행사안내"
+        android:text="주요행사"
         android:textColor="@color/black"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/img_hangsa"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/img_hangsa"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/img_hangsa"
+        app:layout_constraintTop_toTopOf="@+id/img_hangsa"
+        app:layout_constraintVertical_bias="0.555" />
 
     <TextView
         android:id="@+id/text_gongzi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/chosuncentennial_otf"
         android:text="공지사항"
         android:textColor="@color/black"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/img_gongzi"
+        app:layout_constraintEnd_toEndOf="@+id/img_gongzi"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="@+id/img_gongzi"
+        app:layout_constraintTop_toTopOf="@+id/img_gongzi"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <TextView
+        android:id="@+id/under_headline"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:background="#BDBDBD"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:fontFamily="@font/chosunnm"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:text="headline이 표시될 텍스트headline이 표시될 텍스트headline이 표시될 텍스트headline이 표시될 텍스트headline이 표시될 텍스트headline이 표시될 텍스트"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editor"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
