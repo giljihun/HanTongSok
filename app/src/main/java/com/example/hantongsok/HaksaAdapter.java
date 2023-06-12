@@ -18,6 +18,11 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
         this.postList = postList;
     }
 
+    public void setPosts(List<Post> posts) {
+        postList = posts;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
