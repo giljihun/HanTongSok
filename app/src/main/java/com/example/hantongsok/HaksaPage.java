@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -64,37 +65,44 @@ public class HaksaPage extends AppCompatActivity {
                 Elements pagination = doc.select("div.pagination ul li.page-item:not(.disabled) a.page-link");
 
                 // Loop through each page link and crawl the posts
-                for (Element pageLink : pagination) {
-                    String pageUrl = urls[0] + pageLink.attr("href");
-                    doc = Jsoup.connect(pageUrl).get();
-                    Elements rows = doc.select("table.board_list tbody tr");
+                if (pagination.size() >= 3) {
+                    // Loop through each page link and crawl the posts
+                    for (int i = 2; i < pagination.size(); i++) {
+                        Element pageLink = pagination.get(i);
+                        String pageUrl = urls[0] + pageLink.attr("href");
+                        doc = Jsoup.connect(pageUrl).get();
+                        Elements rows = doc.select("table.board_list tbody tr");
 
-                    for (Element row : rows) {
-                        // Skip rows with class="notice"
-                        if (row.hasClass("notice")) {
-                            continue;
-                        }
+                        for (Element row : rows) {
+                            // Skip rows with class="notice"
+                            if (row.hasClass("notice")) {
+                                continue;
+                            }
 
-                        Elements cells = row.select("td");
+                            Elements cells = row.select("td");
 
-                        // Check if the row has the required number of cells
-                        if (cells.size() >= 5) {
-                            int postNumber = Integer.parseInt(cells.get(0).text());
-                            String title = cells.get(1).text();
-                            String author = cells.get(2).text();
+                            // Check if the row has the required number of cells
+                            if (cells.size() >= 5) {
+                                int postNumber = Integer.parseInt(cells.get(0).text());
+                                String title = cells.get(1).text();
+                                String author = cells.get(2).text();
 
-                            // Check if the date cell is present
-                            Element dateCell = cells.get(4);
-                            String date = dateCell != null ? dateCell.text() : "";
+                                // Check if the date cell is present
+                                Element dateCell = cells.get(4);
+                                String date = dateCell != null ? dateCell.text() : "";
 
-                            // Check if the post date is after January 1, 2023
-                            if (isPostDateAfter2023(date)) {
-                                postList.add(new Post(postNumber, title, author, date));
+                                // Check if the post date is after January 1, 2023
+                                if (isPostDateAfter2023(date)) {
+                                    postList.add(new Post(postNumber, title, author, date));
 
-                                Log.d("Crawling", "Post Number: " + postNumber);
-                                Log.d("Crawling", "Title: " + title);
-                                Log.d("Crawling", "Author: " + author);
-                                Log.d("Crawling", "Date: " + date);
+                                    Log.d("Crawling", "Post Number: " + postNumber);
+                                    Log.d("Crawling", "Title: " + title);
+                                    Log.d("Crawling", "Author: " + author);
+                                    Log.d("Crawling", "Date: " + date);
+                                } else {
+                                    // Stop crawling if the post date is not after January 1, 2023
+                                    return null;
+                                }
                             }
                         }
                     }
@@ -143,6 +151,7 @@ public class HaksaPage extends AppCompatActivity {
         }
         return false;
     }
+
     private void loadPosts() {
         adapter.setPosts(postList);
     }

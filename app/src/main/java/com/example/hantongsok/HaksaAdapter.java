@@ -12,15 +12,10 @@ import java.util.List;
 
 public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> {
 
-    private List<Post> postList;
+    private List<Post> posts;
 
-    public HaksaAdapter(List<Post> postList) {
-        this.postList = postList;
-    }
-
-    public void setPosts(List<Post> posts) {
-        postList = posts;
-        notifyDataSetChanged();
+    public HaksaAdapter(List<Post> posts) {
+        this.posts = posts;
     }
 
     @NonNull
@@ -32,30 +27,47 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Post post = postList.get(position);
+        Post post = posts.get(position);
+        holder.postNumberTextView.setText(String.valueOf(post.getPostNumber()));
+        holder.titleTextView.setText(post.getTitle());
+        holder.authorTextView.setText(post.getAuthor());
+        holder.dateTextView.setText(post.getDate());
 
-        holder.tvPostNumber.setText(String.valueOf(post.getPostNumber()));
-        holder.tvPostTitle.setText(post.getTitle());
-        holder.tvPostAuthor.setText(post.getAuthor());
-        holder.tvPostDate.setText(post.getDate());
-
-        holder.tvPostTitle.setSelected(true);
+        // Add separator line between list items
+        if (position < getItemCount() - 1) {
+            holder.separatorView.setVisibility(View.VISIBLE);
+        } else {
+            holder.separatorView.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return postList.size();
+        return posts.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvPostNumber, tvPostTitle, tvPostAuthor, tvPostDate;
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+        notifyDataSetChanged();
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView postNumberTextView;
+        TextView titleTextView;
+        TextView authorTextView;
+        TextView dateTextView;
+        View separatorView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvPostNumber = itemView.findViewById(R.id.tvPostNumber);
-            tvPostTitle = itemView.findViewById(R.id.tvPostTitle);
-            tvPostAuthor = itemView.findViewById(R.id.tvPostAuthor);
-            tvPostDate = itemView.findViewById(R.id.tvPostDate);
+            postNumberTextView = itemView.findViewById(R.id.tvPostNumber);
+            titleTextView = itemView.findViewById(R.id.tvPostTitle);
+            authorTextView = itemView.findViewById(R.id.tvPostAuthor);
+            dateTextView = itemView.findViewById(R.id.tvPostDate);
+            separatorView = itemView.findViewById(R.id.separatorView);
+
+            titleTextView.setSelected(true);
         }
     }
 }
+
