@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/round_white_view"
+    android:background="@drawable/back_1"
     android:gravity="center"
     android:minWidth="300dp"
     android:orientation="vertical"
-    android:padding="20dp">
-
-    <TextView
-        android:id="@+id/dialog_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        tools:text="2023학년도 여름 계절학기 수강신청 취소(철회) 일정 및 절차 안내." />
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal"
+        android:gravity="end">
 
         <TextView
             android:id="@+id/dialog_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14dp"
+            android:textColor="@color/black"
+            android:gravity="end"
+            android:fontFamily="@font/chosuncentennial_otf"
             tools:text="2023-06-12" />
 
         <TextView
+            android:id="@+id/slash1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14dp"
+            android:textColor="@color/black"
+            android:gravity="end"
+            android:fontFamily="@font/chosuncentennial_otf"
             tools:text=" | " />
 
         <TextView
@@ -41,21 +40,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14dp"
+            android:textColor="@color/black"
+            android:gravity="end"
+            android:fontFamily="@font/chosuncentennial_otf"
             tools:text="학사지원과" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            tools:text=" | " />
-
-        <TextView
-            android:id="@+id/dialog_viewed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            tools:text="128" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/chosuncentennial_otf"
+        android:paddingTop="10dp"
+        tools:text="2023학년도 여름 계절학기 수강신청 취소(철회) 일정 및 절차 안내." />
+
+    <View
+        android:id="@+id/separatorView"
+        android:layout_width="370dp"
+        android:layout_height="1dp"
+        android:background="#939292"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,23 +71,24 @@
         android:layout_marginTop="18dp">
 
         <TextView
+            android:id="@+id/post_content"
             android:layout_width="match_parent"
             android:layout_height="474dp"
             android:textSize="14dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/chosuncentennial_otf"
             tools:text=" 게시글 내용이 들어갈 영역! " />
 
     </LinearLayout>
 
-
-
-
-
-    <Button
+    <ImageButton
         android:id="@+id/noButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="95dp"
+        android:layout_height="75dp"
         android:layout_marginEnd="7dp"
         android:layout_weight="1"
+        android:background="@drawable/back_1"
+        android:src="@drawable/dig_back"
         android:text="나가기"
         android:textSize="14sp" />
 

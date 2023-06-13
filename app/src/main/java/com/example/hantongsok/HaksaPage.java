@@ -10,11 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -53,7 +50,7 @@ public class HaksaPage extends AppCompatActivity {
         postList = new ArrayList<>();
 
         // 어댑터 생성 및 RecyclerView에 설정
-        adapter = new HaksaAdapter(postList);
+        adapter = new HaksaAdapter(postList, this);
         recyclerView.setAdapter(adapter);
 
         progressBar = findViewById(R.id.progressBar);
@@ -123,14 +120,20 @@ public class HaksaPage extends AppCompatActivity {
                                 Element dateCell = cells.get(4);
                                 String date = dateCell != null ? dateCell.text() : "";
 
+                                Element linkElement = cells.get(1).selectFirst("a");
+                                String onclickValue = linkElement.attr("onclick");
+                                String keyValue = onclickValue.replaceAll(".*'(.*?)'.*", "$1");
+                                String url = "https://www.hanbat.ac.kr/bbs/BBSMSTR_000000000042/view.do?nttId=" + keyValue + "&mno=sub05_01";
+
                                 // Check if the post date is after January 1, 2023
                                 if (isPostDateAfter2023(date)) {
-                                    postList.add(new Post(postNumber, title, author, date));
+                                    postList.add(new Post(postNumber, title, author, date, url));
 
                                     Log.d("Crawling", "Post Number: " + postNumber);
                                     Log.d("Crawling", "Title: " + title);
                                     Log.d("Crawling", "Author: " + author);
                                     Log.d("Crawling", "Date: " + date);
+                                    Log.d("Crawling", "Url: " + url);
                                 } else {
                                     // Stop crawling if the post date is not after January 1, 2023
                                     return null;
@@ -164,8 +167,6 @@ public class HaksaPage extends AppCompatActivity {
 
             progressBar.setVisibility(View.GONE);
         }
-
-
     }
 
 
@@ -187,4 +188,5 @@ public class HaksaPage extends AppCompatActivity {
     private void loadPosts() {
         adapter.setPosts(postList);
     }
+
 }

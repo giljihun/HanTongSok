@@ -1,11 +1,16 @@
 package com.example.hantongsok;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -13,9 +18,11 @@ import java.util.List;
 public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> {
 
     private List<Post> posts;
+    private Context context;
 
-    public HaksaAdapter(List<Post> posts) {
+    public HaksaAdapter(List<Post> posts, Context context) {
         this.posts = posts;
+        this.context = context;
     }
 
     @NonNull
@@ -39,6 +46,43 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
         } else {
             holder.separatorView.setVisibility(View.GONE);
         }
+
+        // 타이틀 클릭 이벤트 처리
+        holder.titleTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(post);
+            }
+        });
+    }
+
+    private void showDialog(Post post) {
+        // 다이얼로그 생성
+        Dialog dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog_content);
+
+        // 다이얼로그 내용 설정
+        TextView titleTextView = dialog.findViewById(R.id.dialog_title);
+        TextView slash1 = dialog.findViewById(R.id.slash1);
+        TextView authorTextView = dialog.findViewById(R.id.dialog_author);
+        TextView dateTextView = dialog.findViewById(R.id.dialog_date);
+
+        slash1.setText(" | ");
+        titleTextView.setText(post.getTitle());
+        authorTextView.setText(post.getAuthor());
+        dateTextView.setText(post.getDate());
+
+        // "Dismiss" 버튼 클릭 이벤트 처리
+        ImageButton dismissButton = dialog.findViewById(R.id.noButton);
+        dismissButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss(); // 다이얼로그 닫기
+            }
+        });
+
+        // 다이얼로그 표시
+        dialog.show();
     }
 
     @Override
