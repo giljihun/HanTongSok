@@ -1,10 +1,18 @@
 package com.example.hantongsok;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -32,7 +40,6 @@ public class HaksaPage extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +61,31 @@ public class HaksaPage extends AppCompatActivity {
         // 크롤링 수행
         new CrawlTask().execute("https://www.hanbat.ac.kr/bbs/BBSMSTR_000000000042/list.do");
         loadPosts();
+
+        ImageButton back_haksa = findViewById(R.id.btnback_haksa);
+        back_haksa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 눌러짐 효과
+                {
+                    Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_scale_animation);
+                    back_haksa.startAnimation(anim);
+
+                    int filterColor = Color.argb(200, 50, 50, 50); // 적당한 짙은 회색 색상 (알파, 빨강, 초록, 파랑)
+                    back_haksa.setColorFilter(filterColor, PorterDuff.Mode.MULTIPLY);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            // 필터 제거
+                            back_haksa.clearColorFilter();
+                        }
+                    }, 500);
+                }
+                Intent intent = new Intent(HaksaPage.this, MainPage.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // CrawlTask 클래스에 2023년 1월 1일 이후 게시글 크롤링 로직 추가
