@@ -13,6 +13,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hantongsok.Gongzi.GongziPage;
+import com.example.hantongsok.Haksa.HaksaPage;
+import com.example.hantongsok.Hangsa.HangsaPage;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -130,31 +134,31 @@ public class MainPage extends AppCompatActivity {
                 });
             }
 
-            // 설정 버튼
-            {
-                ImageView imgSetting = findViewById(R.id.img_setting);
-                imgSetting.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // 눌러짐 효과
-                        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_scale_animation);
-                        imgSetting.startAnimation(anim);
-                        int filterColor = Color.argb(200, 50, 50, 50); // 적당한 짙은 회색 색상 (알파, 빨강, 초록, 파랑)
-                        imgSetting.setColorFilter(filterColor, PorterDuff.Mode.MULTIPLY);
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                // 필터 제거
-                                imgSetting.clearColorFilter();
-                            }
-                        }, 500);
-
-                        Intent intent = new Intent(MainPage.this, SettingPage.class);
-                        startActivity(intent);
-                    }
-                });
-            }
+            //설정 버튼
+//            {
+//                ImageView imgSetting = findViewById(R.id.img_setting);
+//                imgSetting.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        // 눌러짐 효과
+//                        Animation anim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_scale_animation);
+//                        imgSetting.startAnimation(anim);
+//                        int filterColor = Color.argb(200, 50, 50, 50); // 적당한 짙은 회색 색상 (알파, 빨강, 초록, 파랑)
+//                        imgSetting.setColorFilter(filterColor, PorterDuff.Mode.MULTIPLY);
+//                        Handler handler = new Handler();
+//                        handler.postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                // 필터 제거
+//                                imgSetting.clearColorFilter();
+//                            }
+//                        }, 500);
+//
+//                        Intent intent = new Intent(MainPage.this, SettingPage.class);
+//                        startActivity(intent);
+//                    }
+//                });
+//            }
         }
 
         // 탑, 언더 헤드라인 크롤링

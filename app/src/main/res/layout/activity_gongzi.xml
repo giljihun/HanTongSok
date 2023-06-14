@@ -1,19 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@drawable/back_1"
+    android:gravity="center"
+    tools:context=".Gongzi.GongziPage">
+
+
+    <ImageButton
+        android:id="@+id/btnback_gongzi"
+        android:layout_width="30dp"
+        android:layout_height="45dp"
+        android:layout_weight="0.5"
+        android:background="@drawable/back_1"
+        android:src="@drawable/prev"
+        android:layout_marginLeft="4dp"
+        android:text="Button">
+    </ImageButton>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title_gongzi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="공지사항 페이지"
+        android:text="공지사항."
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="30dp"
+        android:fontFamily="@font/chosuncentennial_otf"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="50dp">
+
+            <TextView
+                android:id="@+id/column_number_gongzi"
+                android:layout_width="49dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/chosuncentennial_otf"
+                android:gravity="center"
+                android:text="번호"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/column_title_gongzi"
+                android:layout_width="193dp"
+                android:layout_height="wrap_content"
+                android:text="제목"
+                android:textSize="16dp"
+                android:gravity="center"
+                android:layout_weight="3"
+                android:fontFamily="@font/chosuncentennial_otf"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/column_author_gongzi"
+                android:layout_width="67dp"
+                android:layout_height="wrap_content"
+                android:text="작성자"
+                android:textSize="16dp"
+                android:gravity="center"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/chosuncentennial_otf"
+                android:textColor="@color/black"/>
+
+
+            <TextView
+                android:id="@+id/column_date_gongzi"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="작성일자"
+                android:textSize="16dp"
+                android:gravity="center"
+                android:layout_weight="0.5"
+                android:fontFamily="@font/chosuncentennial_otf"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar_gongzi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="256dp"
+            style="@android:style/Widget.Holo.Light.ProgressBar.Inverse"
+            android:visibility="gone"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_gongzi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="5dp"/>
+    </LinearLayout>
+
+</FrameLayout>

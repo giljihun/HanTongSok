@@ -157,24 +157,12 @@
         android:layout_width="228dp"
         android:layout_height="202dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/img_setting"
-        app:layout_constraintHorizontal_bias="0.92"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/line3"
-        app:layout_constraintVertical_bias="0.807"
-        app:srcCompat="@drawable/hangsa" />
-
-    <ImageView
-        android:id="@+id/img_setting"
-        android:layout_width="159dp"
-        android:layout_height="126dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/line3"
-        app:layout_constraintVertical_bias="0.685"
-        app:srcCompat="@drawable/notice" />
+        app:layout_constraintVertical_bias="0.834"
+        app:srcCompat="@drawable/hangsa" />
 
     <TextView
         android:id="@+id/text_haksa"
@@ -198,27 +186,11 @@
         android:layout_height="207dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/img_gongzi"
-        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469"
+        app:layout_constraintVertical_bias="0.471"
         app:srcCompat="@drawable/haksa" />
-
-    <TextView
-        android:id="@+id/text_notice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/chosuncentennial_otf"
-        android:text="알림설정"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/img_setting"
-        app:layout_constraintEnd_toEndOf="@+id/img_setting"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/img_setting"
-        app:layout_constraintTop_toTopOf="@+id/img_setting"
-        app:layout_constraintVertical_bias="0.592" />
 
     <TextView
         android:id="@+id/text_hangsa"
@@ -226,15 +198,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/chosuncentennial_otf"
-        android:text="주요행사"
+        android:text="행사안내"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/img_hangsa"
         app:layout_constraintEnd_toEndOf="@+id/img_hangsa"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintHorizontal_bias="0.364"
         app:layout_constraintStart_toStartOf="@+id/img_hangsa"
         app:layout_constraintTop_toTopOf="@+id/img_hangsa"
-        app:layout_constraintVertical_bias="0.555" />
+        app:layout_constraintVertical_bias="0.407" />
 
     <TextView
         android:id="@+id/text_gongzi"

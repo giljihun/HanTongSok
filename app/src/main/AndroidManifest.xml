@@ -28,20 +28,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HaksaPage"
+            android:name=".Haksa.HaksaPage"
             android:label="학사공지"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".GongziPage"
+            android:name=".Gongzi.GongziPage"
             android:label="공지사항"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".HangsaPage"
+            android:name=".Hangsa.HangsaPage"
             android:label="주요행사"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity
-            android:name=".SettingPage"
-            android:label="알림설정"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
 
     </application>
