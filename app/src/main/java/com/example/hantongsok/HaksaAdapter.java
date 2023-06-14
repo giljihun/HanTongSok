@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -88,7 +89,7 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
         TextView filenameTextView = dialog.findViewById(R.id.txt_attachment);
         ImageButton downloadButton = dialog.findViewById(R.id.attachment);
 
-        filenameTextView.setText(post.getFilename());
+        filenameTextView.setText("");
         contentTextView.setMovementMethod(new ScrollingMovementMethod());
         slash1.setText(" | ");
         titleTextView.setText(post.getTitle());
@@ -109,15 +110,16 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
             @Override
             public void onClick(View v) {
                 String attachmentUrl = post.getAttachmentUrl();
+                String fileName = post.getFilename();
                 if (attachmentUrl != null && !attachmentUrl.isEmpty()) {
-                    new DownloadFileTask((Activity) context, attachmentUrl).execute();
+                    new DownloadFileTask((Activity) context, attachmentUrl, fileName).execute();
                 }
             }
         });
 
         // post 클래스에 저장한 url을 가져와서 크롤링.
         String url = post.getUrl();
-        new DownloadContentTask(contentTextView).execute(url);
+        new DownloadContentTask(contentTextView, post, filenameTextView).execute(url);
 
         // 다이얼로그 표시
         dialog.show();
@@ -125,10 +127,14 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
 
     private class DownloadContentTask extends AsyncTask<String, Void, String> {
         private TextView contentTextView;
+        private TextView filenameTextView;
         private String currentTitle;
+        private Post post;
 
-        public DownloadContentTask(TextView contentTextView) {
+        public DownloadContentTask(TextView contentTextView, Post post, TextView filenameTextView) {
             this.contentTextView = contentTextView;
+            this.filenameTextView = filenameTextView;
+            this.post = post;
         }
 
         @Override
@@ -150,13 +156,10 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
                 // 첨부 파일 다운로드 링크 설정
 
                 Elements attachmentElements = doc.select("a.btn-file");
+
                 if (!attachmentElements.isEmpty()) {
                     Element attachmentElement = attachmentElements.first();
                     String href = attachmentElement.attr("href");
-
-                    String html = "<a class=\"btn btn-file  btn-on-ico\" href=\"javascript:fn_egov_downFile('FILE_000000128082Bu8','0')\"><i class=\"ir ir-bbs ir-file left ir-acrobat\"></i>1. 수강취소 매뉴얼(학생용).pdf&nbsp;[556.6&nbsp;KB]</a>";
-                    Element element = Jsoup.parse(html).select("a").first();
-                    fileName = element.text();
 
                     // 다운로드 URL 생성
                     // 식별자와 버전 정보 추출
@@ -175,7 +178,16 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
                     attachmentUrl = "https://www.hanbat.ac.kr/cmm/fms/FileDown.do"
                             + "?atchFileId=" + fileId
                             + "&fileSn=" + fileSn;
-
+                }
+                Element fileDiv = doc.selectFirst("div.ui.bbs--view--file");
+                if (fileDiv != null) {
+                    Elements filenameElements = fileDiv.select("i");
+                    if (!filenameElements.isEmpty()) {
+                        Element filenameElement = filenameElements.first();
+                        Element parentElement = filenameElement.parent();
+                        String text = parentElement.ownText();
+                        fileName = text;
+                    }
                 }
 
                 Log.d("Crawling", "attachmentUrl: " + attachmentUrl);
@@ -200,16 +212,20 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
         @Override
         protected void onPostExecute(String content) {
             contentTextView.setText(content);
+            filenameTextView.setText(post.getFilename());
         }
     }
 
     private class DownloadFileTask extends AsyncTask<Void, Void, Void> {
         private String attachmentUrl;
         private Activity activity;
+        private String filename;
 
-        public DownloadFileTask(Activity activity, String attachmentUrl) {
+        public DownloadFileTask(Activity activity, String attachmentUrl, String filename) {
             this.activity = activity;
             this.attachmentUrl = attachmentUrl;
+            this.filename = filename;
+
         }
 
         @Override
@@ -222,8 +238,11 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
                 InputStream input = connection.getInputStream();
 
                 // 파일을 저장할 경로 및 파일명 지정
-                String filename = attachmentUrl.substring(attachmentUrl.lastIndexOf('/') + 1);
-                String filepath = context.getExternalFilesDir(null).toString() + "/" + filename;
+                String downloadFolder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
+                String modifiedFilename = filename.replaceAll("\\[.*\\]", "").trim();
+
+                String filepath = downloadFolder + "/" + modifiedFilename;
+
                 Log.d("FilePath", "File path: " + filepath); // Log 추가
                 FileOutputStream output = new FileOutputStream(filepath);
 
@@ -266,7 +285,6 @@ public class HaksaAdapter extends RecyclerView.Adapter<HaksaAdapter.ViewHolder> 
     private void showToast(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
-
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView postNumberTextView;
