@@ -73,23 +73,48 @@
         <TextView
             android:id="@+id/post_content"
             android:layout_width="match_parent"
-            android:layout_height="474dp"
-            android:textSize="14dp"
-            android:textColor="@color/black"
+            android:layout_height="429dp"
             android:fontFamily="@font/chosuncentennial_otf"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarFadeDuration="0"
+            android:scrollbarSize="2dp"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="vertical"
+            android:textColor="@color/black"
+            android:textSize="14dp"
             tools:text=" 게시글 내용이 들어갈 영역! " />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/attachment"
+            android:layout_width="33dp"
+            android:layout_height="28dp"
+            android:src="@android:drawable/ic_menu_save">
+        </ImageButton>
+        <TextView
+            android:id="@+id/txt_attachment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/chosuncentennial_otf"
+            android:paddingTop="5dp"
+            tools:text="- 예를들어.pdf " />
+
+    </LinearLayout>
+
+
     <ImageButton
         android:id="@+id/noButton"
-        android:layout_width="95dp"
-        android:layout_height="75dp"
+        android:layout_width="96dp"
+        android:layout_height="74dp"
         android:layout_marginEnd="7dp"
-        android:layout_weight="1"
         android:background="@drawable/back_1"
-        android:src="@drawable/dig_back"
-        android:text="나가기"
-        android:textSize="14sp" />
+        android:src="@drawable/dig_back" />
 
 </LinearLayout>

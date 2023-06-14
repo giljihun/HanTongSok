@@ -127,7 +127,7 @@ public class HaksaPage extends AppCompatActivity {
 
                                 // Check if the post date is after January 1, 2023
                                 if (isPostDateAfter2023(date)) {
-                                    postList.add(new Post(postNumber, title, author, date, url));
+                                    postList.add(new Post(postNumber, title, author, date, url, "0", "0"));
 
                                     Log.d("Crawling", "Post Number: " + postNumber);
                                     Log.d("Crawling", "Title: " + title);

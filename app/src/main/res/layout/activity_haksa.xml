@@ -10,10 +10,10 @@
 
     <ImageButton
         android:id="@+id/btnback_haksa"
-        android:layout_width="wrap_content"
+        android:layout_width="30dp"
         android:layout_height="45dp"
         android:layout_weight="0.5"
-        android:background="@color/white"
+        android:background="@drawable/back_1"
         android:src="@drawable/prev"
         android:layout_marginLeft="4dp"
         android:text="Button">
