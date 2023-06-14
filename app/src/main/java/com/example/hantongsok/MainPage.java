@@ -13,6 +13,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -152,5 +157,78 @@ public class MainPage extends AppCompatActivity {
             }
         }
 
+        // 탑, 언더 헤드라인 크롤링
+        {
+            TextView top_headline = findViewById(R.id.headline);
+            TextView under_headline = findViewById(R.id.under_headline);
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    // Under
+                    try {
+                        // 웹 페이지의 URL
+                        String url = "https://www.hanbat.ac.kr/bbs/BBSMSTR_000000000042/list.do";
+
+                        // Jsoup을 사용하여 웹 페이지의 내용 가져오기
+                        Document doc = Jsoup.connect(url).get();
+
+                        // 웹 페이지에서 <tr class="notice"> 요소 가져오기
+                        Element trElement = doc.selectFirst("tr.notice");
+
+                        // <tr class="notice"> 내부의 <td> 요소 가져오기
+                        Element tdElement = trElement.selectFirst("td.subject");
+
+                        // <td> 내부의 <a> 요소 가져오기
+                        Element aElement = tdElement.selectFirst("a");
+
+                        // <a> 요소의 텍스트(제목) 가져오기
+                        final String title = aElement.text();
+
+                        // UI 업데이트를 위해 메인 스레드에서 실행
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 짧은글 방지 코드
+                                under_headline.setText(title + "   " + title);
+                            }
+                        });
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    // Top
+                    try {
+                        // 웹 페이지의 URL
+                        String url = "https://www.hanbat.ac.kr/bbs/BBSMSTR_000000000050/list.do";
+
+                        // Jsoup을 사용하여 웹 페이지의 내용 가져오기
+                        Document doc = Jsoup.connect(url).get();
+
+                        // 웹 페이지에서 <tr class="notice"> 요소 가져오기
+                        Element trElement = doc.selectFirst("tr.notice");
+
+                        // <tr class="notice"> 내부의 <td> 요소 가져오기
+                        Element tdElement = trElement.selectFirst("td.subject");
+
+                        // <td> 내부의 <a> 요소 가져오기
+                        Element aElement = tdElement.selectFirst("a");
+
+                        // <a> 요소의 텍스트(제목) 가져오기
+                        final String title = aElement.text();
+
+                        // UI 업데이트를 위해 메인 스레드에서 실행
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                top_headline.setText("<HEADLINE NEWS> : " + title);
+                            }
+                        });
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            thread.start();
+        }
     }
 }
