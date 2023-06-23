@@ -188,7 +188,7 @@ public class HangsaAdapter extends RecyclerView.Adapter<HangsaAdapter.ViewHolder
                         String text = parentElement.ownText();
                         fileName = text;
                     }
-                }
+                } else { fileName = "첨부된 파일이 없습니다!";}
 
                 Log.d("Crawling", "attachmentUrl: " + attachmentUrl);
                 Log.d("Crawling", "fileName: " + fileName);
