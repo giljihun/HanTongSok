@@ -129,7 +129,6 @@ public class HangsaPage extends AppCompatActivity {
                                 String keyValue = onclickValue.replaceAll(".*'(.*?)'.*", "$1");
                                 String url = "https://www.hanbat.ac.kr/bbs/BBSMSTR_000000000051/view.do?nttId=" + keyValue + "&mno=sub05_01";
 
-                                // Check if the post date is after January 1, 2023
                                 if (isPostDateAfter2023(date)) {
                                     postList.add(new Post(postNumber, title, author, date, url, "0", "0"));
 
@@ -139,7 +138,6 @@ public class HangsaPage extends AppCompatActivity {
                                     Log.d("Crawling", "Date: " + date);
                                     Log.d("Crawling", "Url: " + url);
                                 } else {
-                                    // Stop crawling if the post date is not after January 1, 2023
                                     return null;
                                 }
                             }
@@ -174,13 +172,13 @@ public class HangsaPage extends AppCompatActivity {
     }
 
 
-    // "yyyy-MM-dd" 형식의 날짜를 비교하여 2023년 1월 1일 이후인지 확인하는 메서드
+    // "yyyy-MM-dd" 형식의 날짜를 비교하여 2023년 6월 1일 이후인지 확인하는 메서드
     private boolean isPostDateAfter2023(String dateString) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date date = format.parse(dateString);
             Calendar calendar = Calendar.getInstance();
-            calendar.set(2023, Calendar.JANUARY, 1);
+            calendar.set(2023, Calendar.JUNE, 1);
             Date date2023 = calendar.getTime();
             return date != null && date.after(date2023);
         } catch (ParseException e) {
