@@ -1,58 +1,49 @@
 # HanTongSok
 
-~~~ 공사중 ~~~
-<p align="center"><img width="200" alt="image" src="https://github.com/giljihun/In-Timer-/assets/75918176/90c79162-ad21-448c-82cd-073b75c2e585"></p>
-
----
+<p align="center"><img width="200" alt="image" src="https://github.com/giljihun/HanTongSok/assets/75918176/d05472f1-7132-4075-81a1-777b61de0f34"></p>
 
 ## STACKS
 
-<img src="https://img.shields.io/badge/swift-F05138?style=for-the-badge&logo=swift&logoColor=white">
+<img src="https://img.shields.io/badge/androidstudio-3DDC84?style=for-the-badge&logo=androidstudio&logoColor=white"> <img src="https://img.shields.io/badge/java-0085DE?style=for-the-badge&logo=java&logoColor=white">
+
+## PREVIEW
+
 
 ## SUMMARY
 
-providing updates and news about the university's events and community.
-
-(원하는 인터벌을 설정하면 해당 시각마다 음성알림을 주는 앱입니다)
+한밭대학교의 이벤트와 커뮤니티에 대한 최신 정보와 뉴스를 제공하는 어플.
 
 </br>
 
 ## MOTIVE
 
-In the process of constantly checking the time every morning and preparing
-I thought it would be convenient if I could just put my cell phone far away and listen to it by voice.
+학교의 공지사항, 학사공지, 행사안내 등을 보기 위해선 학교 홈페이지에 들어가야 하는게 
+너무 필수사항이 되었습니다.
 
-(매일 아침 시간을 지속적으로 확인하며 준비하는 과정에서
-그냥 휴대폰은 저 멀리 두고 음성으로 들을 수 있으면 편하겠다 생각했다.)
+저는 저를 포함한 학생들이 미처 공지를 보지못하고 놓치는 부분이 분명 있을거라 생각을 했고, 
+(실제로 근로신청 공지사항을 보지못하여 지난 1학기에 근로를 하지 못한 뼈아픈 일이 있었습니다,.)
 
+그렇게 '한밭대학교의 여러 공지들을 확인하기 편하게 해주고 알림을 주는 어플'을 기획했습니다. 
 </br>
 
 ## PROJECT DURATION
 
 #### Planning & Development
-`2023.06.30` ~ `2023.07.18.`
+`2023.06.01` ~ `2023.06.23.`
 
 </br>
 
 ## FEATURE INTRODUCTION
 
-You can set voice guidance intervals as you prefer, or opt for vibration mode instead. 
-Additionally, you can access voice and translation functions in various languages of your choice.  
 
-(음성 안내 간격을 원하는 대로 설정하거나 진동 모드를 선택할 수 있으며, 음성 및 번역 기능을 원하는 언어로 이용할 수 있습니다.)
 
 </br>
 
 ## Update Content
 
-[Lastest] Verson 1.1 - You can get Notifications of Interval Time in background.
-
-(원하는 대로 음성 안내 간격을 설정하거나 대신 진동 모드를 선택할 수 있습니다.
-또한 선택한 다양한 언어로 음성 및 번역 기능에 액세스할 수 있습니다.)
 
 ## LINK TO APP STORE
 
-https://apps.apple.com/kr/app/in-timer/id6451440300
 
 </br>
 
